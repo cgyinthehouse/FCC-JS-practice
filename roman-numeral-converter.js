@@ -1,4 +1,4 @@
-function covertToRoman(num) {
+function convertToRoman(num) {
     const romanNums = {
         1000: 'M',
         900: 'CM',
@@ -15,5 +15,15 @@ function covertToRoman(num) {
         1: 'I'
     };
     let result = '';
-    romanNums.keys().
+    const baseToFind =Object.keys(romanNums).sort((a,b)=> b-a); 
+    while(true){
+        let base = baseToFind.find(element => element <= num);
+        num -= base;
+        result += romanNums[base];
+        if (num == 0) break;
+    }
+    console.log(result);
 }
+
+convertToRoman(567);
+convertToRoman(4);
